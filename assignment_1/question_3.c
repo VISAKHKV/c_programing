@@ -1,53 +1,42 @@
-#include <stdio.h>
+#include<stdio.h>
 
-int n;
-int age[100];
-
-void main() {
+int main()
+{
+    int age[50],n;
+    int compareFunction(int,int[50]);
     
-    void sortingFunction(int,int [100]);
-    int largest(int,int [100]);
-    int smallest(int,int [10]);
+    printf("\nEnter the number employees : ");
+    scanf("%d",&n);
     
-    printf("Enter the number employees : ");
-    scanf("%d", &n);
-    
-    for (int i = 0; i < n; ++i) {
-    printf("Enter age of employee %d : ", i + 1);
-    scanf("%d",&age[i]);
+    for(int i=0;i<n;++i){
+        printf("Enter age of employee %d : ", i + 1);
+        scanf("%d",&age[i]);
     }
     
     sortingFunction(n,age);
-    largest(n,age);
-    smallest(n,age);
+    compareFunction(n,age);
     
     return 0;
 }
 
-// Function to find the largest age
-int largest(int n, int age[100]){
-
-    for (int i = 1; i < n; ++i) {
-        if (age[0] < age[i]) {
-          age[0] = age[i];
+// Function to find the largest ane smallest element
+int compareFunction(int n,int age[50]){
+    
+    int large,small;
+    large=small=age[0];
+    
+    for(int i=1;i<n;++i){
+        if(age[i]>large){
+            large=age[i];
+        }
+        
+        if(age[i]<small){
+            small=age[i];
         }
     }
     
-    printf("\nUpper age is = %d", age[0]);
-}
-
-
-// Function to find the smallest age
-int smallest(int n, int age[100]){
-    
-    int min = age[0];    
-    for (int i = 0; i < n; i++) {
-        if (age[i] < min) {
-          min = age[i];    
-        }
-    }
-    
-    printf("\nLower age is = %d", min);
+    printf("\nLower age is : %d",small);
+    printf("\nUpper age is : %d",large);
 }
 
 // Function to sort the array
